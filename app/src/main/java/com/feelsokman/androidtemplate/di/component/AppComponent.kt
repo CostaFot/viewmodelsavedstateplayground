@@ -1,11 +1,10 @@
 package com.feelsokman.androidtemplate.di.component
 
 import android.app.Application
-import com.feelsokman.androidtemplate.TemplateApplication
-import com.feelsokman.androidtemplate.di.module.ActivityBuilderModule
+import com.feelsokman.androidtemplate.RedditApplication
+import com.feelsokman.androidtemplate.coroutine.DispatcherProvider
 import com.feelsokman.androidtemplate.di.module.AppModule
 import com.feelsokman.androidtemplate.di.module.NetworkModule
-import com.feelsokman.androidtemplate.di.module.UseCaseModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
@@ -16,13 +15,11 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
-        ActivityBuilderModule::class,
         AppModule::class,
-        NetworkModule::class,
-        UseCaseModule::class
+        NetworkModule::class
     ]
 )
-interface AppComponent : AndroidInjector<TemplateApplication> {
+interface AppComponent : AndroidInjector<RedditApplication> {
 
     @Component.Builder
     interface Builder {
@@ -32,4 +29,6 @@ interface AppComponent : AndroidInjector<TemplateApplication> {
 
         fun build(): AppComponent
     }
+
+    fun dispatcherProvider(): DispatcherProvider
 }

@@ -77,7 +77,7 @@ android {
             dimension "style"
             applicationIdSuffix ".templateStyle"
             versionNameSuffix "-templateStyle"
-            resValue "string", "app_name", "Android Template"
+            resValue "string", "app_name", "SavedStateVM"
             versionCode 1
             versionName "0.1"
         }
@@ -139,6 +139,9 @@ dependencies {
     implementation rootProject.ext.dependencies.annotation
     implementation rootProject.ext.dependencies.fragmentKtx
     implementation rootProject.ext.dependencies.liveDataKtx
+
+    // Saved state module for ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0"
 
     // Lifecycle
     implementation rootProject.ext.dependencies.lifecycle
