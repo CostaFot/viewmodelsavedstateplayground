@@ -1,4 +1,4 @@
-package com.feelsokman.androidtemplate.ui.dagger2
+package com.feelsokman.androidtemplate.ui.reddit
 
 import android.app.Activity
 import androidx.lifecycle.AbstractSavedStateViewModelFactory

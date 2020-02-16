@@ -1,4 +1,4 @@
-package com.feelsokman.androidtemplate.ui.dagger2
+package com.feelsokman.androidtemplate.ui.reddit
 
 import com.feelsokman.androidtemplate.coroutine.DispatcherProvider
 import kotlinx.coroutines.delay

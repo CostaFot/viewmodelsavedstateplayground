@@ -1,4 +1,4 @@
-package com.feelsokman.androidtemplate.ui.dagger2
+package com.feelsokman.androidtemplate.ui.reddit
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
 import com.feelsokman.androidtemplate.R
 import com.feelsokman.androidtemplate.RedditApplication
-import com.feelsokman.androidtemplate.extensions.logDebug
 import kotlinx.android.synthetic.main.activity_reddit.*
 import javax.inject.Inject
 
@@ -18,14 +17,7 @@ class RedditActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (!::redditComponent.isInitialized) {
-            logDebug { "Component is not initialised" }
-            redditComponent = DaggerRedditComponent.builder()
-                .activity(this)
-                .appComponent(RedditApplication.component)
-                .build()
-        }
-        redditComponent.inject(this)
+        injectDependencies()
         setContentView(R.layout.activity_reddit)
 
         redditViewModel.redditPostData.observe(this) { state ->
@@ -38,5 +30,15 @@ class RedditActivity : AppCompatActivity() {
         button.setOnClickListener {
             redditViewModel.getRedditPost()
         }
+    }
+
+    private fun injectDependencies() {
+        if (!::redditComponent.isInitialized) {
+            redditComponent = DaggerRedditComponent.builder()
+                .activity(this@RedditActivity)
+                .appComponent(RedditApplication.component)
+                .build()
+        }
+        redditComponent.inject(this)
     }
 }

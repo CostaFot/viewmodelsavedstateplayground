@@ -1,4 +1,4 @@
-package com.feelsokman.androidtemplate.ui.dagger2
+package com.feelsokman.androidtemplate.ui.reddit
 
 import android.os.Parcelable
 import androidx.lifecycle.MutableLiveData
@@ -36,7 +36,6 @@ class RedditViewModel(
         private const val KEY_REDDIT = "key_reddit"
     }
 }
-
 sealed class RedditPost {
     @Parcelize
     object Loading : RedditPost(), Parcelable
